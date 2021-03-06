@@ -2,8 +2,10 @@ import os
 
 
 class snd_ns_data_prepocessor(object):
-    def __init__(self, chunk_size):
+    def __init__(self, chunk_size, syscalls_file_dir: str, snd_folder_names: [str]):
         self.chunk_size = chunk_size
+        self.syscalls_file_dir = syscalls_file_dir
+        self.snd_file_names = snd_folder_names
 
     def __chunkify(self, line, chunk_size):
         result = []
@@ -16,8 +18,8 @@ class snd_ns_data_prepocessor(object):
         return result
 
     def preprocess_and_save_snd_data(self):
-        for snd_file in ['snd-cert', 'snd-unm']:
-            snd_file_dir = 'negative-selection/syscalls/{}/'.format(snd_file)  # loop over both cert and unm dirs
+        for snd_file in self.snd_file_names:
+            snd_file_dir = self.syscalls_file_dir + '/{}/'.format(snd_file)  # loop over both cert and unm dirs
             # Create chunks of size N from training file:
             with open(snd_file_dir + '{}.train'.format(snd_file)) as train_file:
                 train = []
