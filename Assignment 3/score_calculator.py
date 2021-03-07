@@ -17,14 +17,14 @@ class score_calculator(object):
 
 		for name in self.syscalls_folder_names:
 			for j in range(1, 4):
-				for i in np.arange(2, 12, 3):
-					with open('{}/{}/N{}/{}.{}.labels'.format(self.syscalls_folder_dir, name, self.chunk_size, name, j), 'r') as label_file, open(
-							'{}/{}/N{}/results/{}.{}.{}.txt'.format(self.syscalls_folder_dir, name, self.chunk_size, name, j, i), 'r') as result_file, open(
-							'{}/{}/N{}/avgscores/{}.{}.{}.avgscores'.format(self.syscalls_folder_dir, name, self.chunk_size, name, j, i), 'w') as avg_score_file:
+				for i in np.arange(2, 12, 3): #r-values
+					with open('{}/{}/N{}/{}.{}.labels'.format(self.syscalls_folder_dir, name, self.chunk_size, name, j), 'r', encoding="utf-8") as label_file, open(
+							'{}/{}/N{}/results/{}.{}.{}.txt'.format(self.syscalls_folder_dir, name, self.chunk_size, name, j, i), 'r', encoding="utf-8") as result_file, open(
+							'{}/{}/N{}/avgscores/{}.{}.{}.avgscores'.format(self.syscalls_folder_dir, name, self.chunk_size, name, j, i), 'w', encoding="utf-8") as avg_score_file:
 
 						counts = defaultdict(int)
 						sum = defaultdict(float)
-						score_list = [float(score) for score in result_file]
+						score_list = [float(score) if score.strip() != "NaN" else float(0) for score in result_file.read().splitlines()]
 
 						for i, label in enumerate(label_file):
 							counts[label.strip()] += 1
