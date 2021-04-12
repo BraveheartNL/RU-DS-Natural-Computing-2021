@@ -224,9 +224,9 @@ def plot_adaboost(X: np.ndarray,
                            f"Average Test Precision = {avg_prec:0.1%}, " \
                            f"Test Recall = {recall:0.1%}."
         else:
-            mean_acc_str = f"Mean Test Error = {mean_err:0.1%}, " \
-                           f"Average Test Precision = {avg_prec:0.1%}, " \
-                           f"Test Recall = {recall:0.1%}."
+            mean_acc_str = f"Mean Train Error = {mean_err:0.1%}, " \
+                           f"Average Train Precision = {avg_prec:0.1%}, " \
+                           f"Train Recall = {recall:0.1%}."
 
         plt.figtext(0.05, 0.01, mean_acc_str, fontsize=8)
         if not output:
