@@ -9,6 +9,7 @@ import matplotlib as mpl
 import os
 
 
+# Assignment 5.5
 def ada_boost_experiment():
     '''
     Divided subsections of experimentation with the Scikit-learn basic AdaboostClassifier.
@@ -36,7 +37,7 @@ def ada_boost_experiment():
 
     model = classifier.fit(x_train, y_train)
 
-    #Plot evaluation metrics and decision boundaries on train and test set:
+    # Plot evaluation metrics and decision boundaries on train and test set:
     plot_adaboost(x_train, y_train, model, output=True, title=title)
     plot_adaboost(x_test, y_test, model, test=True, output=True, title=title)
 
@@ -54,7 +55,7 @@ def ada_boost_experiment():
 
     model = classifier.fit(x_train, y_train)
 
-    #Plot evaluation metrics and decision boundaries on train and test set:
+    # Plot evaluation metrics and decision boundaries on train and test set:
     plot_adaboost(x_train, y_train, model, output=True, title=title)
     plot_adaboost(x_test, y_test, model, test=True, output=True, title=title)
 
@@ -72,7 +73,7 @@ def ada_boost_experiment():
 
     model = classifier.fit(x_train, y_train)
 
-    #Plot evaluation metrics and decision boundaries on train and test set:
+    # Plot evaluation metrics and decision boundaries on train and test set:
     plot_adaboost(x_train, y_train, model, output=True, title=title)
     plot_adaboost(x_test, y_test, model, test=True, output=True, title=title)
 
@@ -179,7 +180,6 @@ def plot_adaboost(X: np.ndarray,
         fig, ax = plt.subplots(figsize=(5, 5), dpi=100)
         fig.set_facecolor('white')
         fig.suptitle(title)
-
 
     pad = 1
     x_min, x_max = X[:, 0].min() - pad, X[:, 0].max() + pad
